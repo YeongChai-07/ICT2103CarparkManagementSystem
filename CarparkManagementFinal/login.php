@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Carpark Management - Login</title>
@@ -21,19 +15,19 @@ and open the template in the editor.
                     <div class="panel panel-login">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-xs-6">
-                                    <a href="#" class="active" id="login-form-link">Login</a>
-                                </div>
-                                <div class="col-xs-6">
-                                    <a href="#" id="register-form-link">Register</a>
-                                </div>
+                                <!--                                <div class="col-xs-6">
+                                                                    <a href="#" class="active" id="login-form-link">Login</a>
+                                                                </div>
+                                                                <div class="col-xs-6">
+                                                                    <a href="#" id="register-form-link">Register</a>
+                                                                </div>-->
                             </div>
                             <hr>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+                                    <form id="login-form" action='checkLogin.php' method="post" role="form" style="display: block;">
                                         <div class="form-group">
                                             <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                                         </div>
@@ -61,6 +55,8 @@ and open the template in the editor.
                                             </div>
                                         </div>
                                     </form>
+
+
                                     <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
                                         <div class="form-group">
                                             <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
