@@ -15,16 +15,22 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href = "css/newcss.css" rel = "stylesheet" type = "text/css"/>
     </head>
-    <body>
+    <body >
         <div class = "container">
+
             <div class = "row">
+
                 <div class = "col-md-6 col-md-offset-3">
                     <h2>Carpark Management System</h2>
                     <div></div>
                     <div class = "btn-group btn-group-justified">
-                        <a href = "addCars.php" class = "btn btn-info">Cars</a>
+                        <a href = "addCars.php" class = "btn btn-info" >Cars</a>
                         <a href = "seasonParking.php" class = "btn btn-info">Season Parking</a>
-                        <a href = "booking.php" class = "btn btn-info">Bookings</a>
+                        <a href = "booking.php" class = "btn btn-info" >Bookings</a>
+                    </div>
+                    <div class="row">
+                        <br></br>
+                        <a href="logout.php"<button class="btn btn-warning btn-sm" name="back" type="submit" style="float: right;">Log Out</button></a>
                     </div>
                 </div>
             </div>
