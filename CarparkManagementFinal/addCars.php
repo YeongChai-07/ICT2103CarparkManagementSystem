@@ -1,4 +1,5 @@
 
+
 <html>
     <head>
         <title>Add Cars</title>
@@ -25,9 +26,9 @@
                 <h3>Cars</h3>
                 <div></div>
                 <div class="btn-group btn-group-justified">
-                    <a href="addCars.php" class="btn btn-info active">Add</a>
-                    <a href="modifyCars.php" class="btn btn-info">Modify</a>
-                    <a href="deleteCars.php" class="btn btn-info">Delete</a>
+                    <a href="addCars.php" class="btn btn-success active">Add</a>
+                    <a href="modifyCars.php" class="btn btn-warning">Modify</a>
+                    <a href="deleteCars.php" class="btn btn-danger">Delete</a>
                 </div>
                 <div class="jumbotron">
                     <h4>Car Details - Add a Car</h4>

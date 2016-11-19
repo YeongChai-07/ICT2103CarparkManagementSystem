@@ -7,6 +7,13 @@ and open the template in the editor.
 
 -->
 
+<?php
+include 'checksession.php';
+include 'connectionDB';
+
+$usernameDisplay = $_SESSION['UName'];
+?>
+
 <html>
     <head>
         <title>Carpark Management - Homepage</title>
@@ -15,13 +22,14 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href = "css/newcss.css" rel = "stylesheet" type = "text/css"/>
     </head>
+
     <body >
         <div class = "container">
-
             <div class = "row">
 
                 <div class = "col-md-6 col-md-offset-3">
                     <h2>Carpark Management System</h2>
+                    <h3>Welcome, <?php echo $usernameDisplay ?>!</h3>
                     <div></div>
                     <div class = "btn-group btn-group-justified">
                         <a href = "addCars.php" class = "btn btn-info" >Cars</a>
@@ -40,7 +48,7 @@ and open the template in the editor.
 </html>
 
 <!--Query Database and Display-->
-//<?php
+<?php
 //$host = "ict2103team1server.database.windows.net";
 //$user = "ict2103Team1";
 //$pwd = "ict2103!";
