@@ -83,7 +83,30 @@ $usernameDisplay = $_SESSION['UName'];
 
 ?>
                             </thead>
+<<<<<<< HEAD
 
+=======
+<!--                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Blk...</td>
+                                    <td>16/10/2016 - 15/11/2016</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Blk...</td>
+                                    <td>16/10/2016 - 15/11/2016</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Blk...</td>
+                                    <td>16/10/2016 - 15/11/2016</td>
+                                </tr>
+                                <tr>
+                                    
+                                </tr>
+                            </tbody>-->
+>>>>>>> 59e9300f3372268ea7c7bceb59d879a0a9f9ac02
                         </table>
                         
                         <div class ="row">
@@ -102,3 +125,67 @@ $usernameDisplay = $_SESSION['UName'];
 
     </body>
 </html>
+<!--Query Database and Display-->
+<?php
+$host = "ict2103team1server.database.windows.net";
+$user = "ict2103Team1";
+$pwd = "ict2103!";
+$db = "ict2103Team1";
+
+// Connecting to database
+try {
+    $dbh = new PDO("sqlsrv:Server= $host ; Database = $db ", $user, $pwd);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+    die(var_dump($e));
+}
+
+$sql = "select SP_Location, startDate, endDate from manageSeasonParking";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($arr as $titleData){
+    echo $titleData['SP_Location'];
+}
+//$result = $dbh->query($sql);
+
+//if($result->num_rows > 0){
+//    echo "<table><tr><th>Carpark Location</th><th>Start Date</th><th>End Date</th></tr>";
+//    
+////    while($row = $result->fetch_assoc()) {
+//    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+//    foreach ($rows as $row) {
+//        echo $row['sp_loaction'];
+//    }
+////    foreach ($registrants as $registrant) {
+////        echo "<tr><td>".$registrant["SP_Location"]."</td><td>".$registrant["startDate"]."</td><td>".$registrant["endDate"]."</td></tr>";
+////        
+////    }
+//    
+//    echo "</table>";
+}
+else {
+    echo "0 results";
+}
+
+$dbh->close();
+
+//$stmt = $dbh->query($sql);
+//$registrants = $stmt- >fetchAll();
+//if (count($registrants) > 0) {
+//    echo "<table>";
+//    echo "<tr><th>StaffID</th>";
+//    echo "<th>Section</th>";
+//    foreach ($registrants as $registrant) {
+//        echo "<tr><td>" . $registrant['userName'] . "</td>";
+//        echo "<td>" . $registrant['userPassword'] . "</td>";
+//        echo "</tr>";
+//    }
+//    echo "</table>";
+//} else {
+//    echo "<h3>No one is currently registered.</h3>";
+//}
+
+
+?>
