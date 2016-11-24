@@ -4,6 +4,13 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+include 'checksession.php';
+include 'connectionDB';
+
+$usernameDisplay = $_SESSION['UName'];
+?>
+
 <html>
     <head>
         <title>Booking</title>
@@ -26,51 +33,67 @@ and open the template in the editor.
             </div>
         </nav>
 
-        
+
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <h3>My Carpark Bookings</h3>
                 <div class="jumbotron">
-                <div class="row"></div>
+                    <div class="row"></div>
                     <div class="container">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>S/N</th>
-                                    <th>Reserved Lots</th>
                                     <th>Carpark Location</th>
+                                    <th>Lot Number</th>
+                                    <th>Rate</th>
                                     <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>89</td>
-                                    <td>Blk...</td>
-                                    <td>16/10/2016</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>89</td>
-                                    <td>Blk...</td>
-                                    <td>16/10/2016</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>89</td>
-                                    <td>Blk...</td>
-                                    <td>16/10/2016</td>
-                                </tr>
-                                <tr>
-                                    
-                                </tr>
+                                <?php
+                                $host = "ict2103team1server.database.windows.net";
+                                $user = "ict2103Team1";
+                                $pwd = "ict2103!";
+                                $db = "ict2103Team1";
+
+                                // Connecting to database
+                                try {
+                                    $dbh = new PDO("sqlsrv:Server= $host ; Database = $db ", $user, $pwd);
+                                    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                } catch (Exception $e) {
+                                    die(var_dump($e));
+                                }
+
+                                $sql = "select * from userRelation, customer, carparkBooking, carpark where userRelation.userID= customer.userID 
+                                    and userRelation.userName='$usernameDisplay' and customer.custNRIC=carparkBooking.custNRIC and carpark.carparkID = carparkBooking.carparkID";
+
+                                $query = $dbh->prepare($sql);
+                                $query->execute();
+                                $result = $query->fetchAll();
+                                foreach ($result as $row) {
+
+                                   
+
+
+                                    echo "<tr><td>" . $row["carparkLocation"] . "</td><td>" . $row["lotNumber"] . "</td><td>" . $row["rate"] 
+                                            . "</td><td>" . $row["startDate"] . "</td></tr>";
+                                }
+                                //td= coloum
+                                //tr=row
+
+                                
+
+                                //echo "0 results";
+
+                                $dbh->close();
+                                ?>
                             </tbody>
                         </table>
-                        
+
                         <div class ="row">
                             <div class ="col-md-10"></div>
                             <div class ="col-md-2">
-                               <a href="booking.php" class="btn btn-default" role="button">Back</a>
+                                <a href="booking.php" class="btn btn-default" role="button">Back</a>
                             </div>
                         </div>
 

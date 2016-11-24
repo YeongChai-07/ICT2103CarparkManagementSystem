@@ -4,8 +4,26 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+
+<?php
+include 'checksession.php';
+include 'connectionDB.php';
+
+$usernameDisplay = $_SESSION['UName'];
+?>
+
 <html>
     <head>
+        <script>
+            function showCost(str) {
+                if (str == "") {
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    document.getElementById("txtHint").innerHTML = str;
+                }
+            }
+        </script>
         <title>Season Parking</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,17 +94,39 @@ and open the template in the editor.
                                 </div>
 
                             </div> 
-                            <div class ="col-md-1">
-                                <select class="selectpicker">Carpark Name
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                            <div class ="col-md-2">
+                                <select class="selectpicker" id = "carpark" onchange="showCost(this.value)">Carpark Name
+                                    <option>Select a carpark location</option>
+                                    <?php
+                                    $host = "ict2103team1server.database.windows.net";
+                                    $user = "ict2103Team1";
+                                    $pwd = "ict2103!";
+                                    $db = "ict2103Team1";
+
+                                    // Connecting to database
+                                    try {
+                                        $dbh = new PDO("sqlsrv:Server= $host ; Database = $db ", $user, $pwd);
+                                        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    } catch (Exception $e) {
+                                        die(var_dump($e));
+                                    }
+                                    $sql = "select * from carpark";
+
+                                    $query = $dbh->prepare($sql);
+                                    $query->execute();
+                                    $result = $query->fetchAll();
+                                    foreach ($result as $row) {
+                                        echo "<option value = '" . $row["rate"] . "' >" . $row["carparkLocation"] . "</option>";
+                                    }
+                                    ?>
                                 </select>
 
                                 <p> </p>
-                                <label for="SPcost">$200</label>
+                                <label id = "txtHint">
+                                </label>
                                 <p> </p>
-                                <input type="text" id="datepicker" name="datepicker">
+                                <input type="text" id="datepicker" name="datepicker"> 
+                                <p></p>
                                 <input type="text" id="datepicker1" name="datepicker">
 
                             </div>
@@ -96,6 +136,17 @@ and open the template in the editor.
                         <div class ="col-md-9"></div>
                         <div class ="col-md-1">
                             <a href="seasonParking2.php" class="btn btn-default" role="button">Book</a>
+                            <?php
+                            $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+                            if ($conn->query($sql) === TRUE) {
+                                echo "New record created successfully";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . $conn->error;
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>

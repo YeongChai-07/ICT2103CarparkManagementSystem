@@ -4,6 +4,13 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+include 'checksession.php';
+include 'connectionDB.php';
+
+$usernameDisplay = $_SESSION['UName'];
+?>
+
 <html>
     <head>
         <title>View Season Parking</title>
@@ -33,34 +40,50 @@ and open the template in the editor.
                 <div class="jumbotron">
                 <div class="row"></div>
                     <div class="container">
-                        <table class="table">
+                        <table class="table" cellspacing = "10">
                             <thead>
                                 <tr>
-                                    <th>S/N</th>
                                     <th>Carpark Location</th>
-                                    <th>Period</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                 </tr>
+                                <?php
+                                $host = "ict2103team1server.database.windows.net";
+                                $user = "ict2103Team1";
+                                $pwd = "ict2103!";
+                                $db = "ict2103Team1";
+
+                                // Connecting to database
+                                try {
+                                    $dbh = new PDO("sqlsrv:Server= $host ; Database = $db ", $user, $pwd);
+                                    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                } catch (Exception $e) {
+                                    die(var_dump($e));
+                                }
+
+                                $sql = "select * from userRelation, customer,manageSeasonParking where userRelation.userID= customer.userID 
+                                    and userRelation.userName='$usernameDisplay' and customer.custNRIC=manageSeasonParking.custNRIC";
+                                
+                                $query = $dbh->prepare($sql);
+                                $query->execute();
+                                $result = $query->fetchAll();
+                                foreach ($result as $row) {
+
+
+
+                                    echo "<tr><td>" . $row["SP_Location"] . "</td><td>" . $row["startDate"] . "</td><td>" . $row["endDate"] . "</td></tr>";
+                                }
+                                //td= coloum
+                                //tr=row
+
+
+                                //echo "0 results";
+
+                                $dbh->close();
+
+?>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Blk...</td>
-                                    <td>16/10/2016 - 15/11/2016</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Blk...</td>
-                                    <td>16/10/2016 - 15/11/2016</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Blk...</td>
-                                    <td>16/10/2016 - 15/11/2016</td>
-                                </tr>
-                                <tr>
-                                    
-                                </tr>
-                            </tbody>
+
                         </table>
                         
                         <div class ="row">

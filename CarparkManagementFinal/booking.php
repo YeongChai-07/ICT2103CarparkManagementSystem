@@ -4,6 +4,22 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+include 'checksession.php';
+include 'connectionDB.php';
+
+$usernameDisplay = $_SESSION['UName'];
+?>
+<script>
+            function showCarpark(str) {
+                if (str == "") {
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    document.getElementById("txtHint").innerHTML = str;
+                }
+            }
+        </script>
 <html>
     <head>
         <title>Booking</title>
@@ -29,7 +45,7 @@ and open the template in the editor.
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h3>Book a Car</h3>
+                <h3>Book a Carpark Lot</h3>
                 <div class="jumbotron">
                     <div class ="row">
                         <div class ="col-md-8"></div>
@@ -39,75 +55,64 @@ and open the template in the editor.
                     </div>
                     <div class ="row"></div>
                     <div class ="col-md-2"></div>
-                    <div class="col-md-4">
-                        <p></p>
-                        <p></p>
-                        <label for="street">Choose a street:</label>
-                        <select class="selectpicker">Street Name
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
+                   
                     <div class="col-md-6">
                         <p></p>
                         <label for="street">Choose a carpark location:</label>
-                        <!--<div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">-ALL CARPARKS-
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
-                            </ul>
-                        </div> -->
+                        <select class="selectpicker" onchange = "showCarpark(this.value)">ALL CARPARKS
+                            <option>Select a carpark location</option>
+                                    <?php
+                                    $host = "ict2103team1server.database.windows.net";
+                                    $user = "ict2103Team1";
+                                    $pwd = "ict2103!";
+                                    $db = "ict2103Team1";
 
-                        <select class="selectpicker">ALL CARPARKS
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
+                                    // Connecting to database
+                                    try {
+                                        $dbh = new PDO("sqlsrv:Server= $host ; Database = $db ", $user, $pwd);
+                                        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    } catch (Exception $e) {
+                                        die(var_dump($e));
+                                    }
+                                    $sql = "select * from carpark";
+
+                                    $query = $dbh->prepare($sql);
+                                    $query->execute();
+                                    $result = $query->fetchAll();
+//                                    foreach ($result as $row) {
+//
+//
+//                                        echo "<option = value = '" . $row["carparkID"] . "'>" . $row["carparkLocation"] . "</option>";
+//                                    }
+                                    foreach ($result as $row) {
+                                        echo "<option value = '<td>" . $row["SP_Location"] . "</td><td>" . $row["lotsAvailable"] . "</td><td>" . $row["rate"] . "</td>' >" . $row["carparkLocation"]  . "</option>";
+//                                    echo "<option value = '" . $row["rate"] . "' >" . $row["carparkLocation"] . "</option>";
+                                    }
+                                    ?>
                         </select>
                     </div>
-                    <div class="row"></div>
-                    <h4>Available Carparks</h4>
-                    <div class="container">
-                        <table class="table">
+                    <table class="table" cellspacing = "10">
                             <thead>
                                 <tr>
                                     <th>Carpark Location</th>
                                     <th>Available Lots</th>
                                     <th>Carpark Rate</th>
-                                    <th> </th>
                                 </tr>
+                                 <label id = "txtHint">
+                                </label>
+
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>1</td>
-                                    <td>$10</td>
-                                    <td><a href="bookingConfirm.php" class="btn btn-default" role="button">Book</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Mary</td>
-                                    <td>10</td>
-                                    <td>$40</td>
-                                    <td><a href="bookingConfirm.php" class="btn btn-default" role="button">Book</a></td>
-                                </tr>
-                                <tr>
-                                    <td>July</td>
-                                    <td>20</td>
-                                    <td>$5</td>
-                                    <td><a href="bookingConfirm.php" class="btn btn-default" role="button">Book</a></td>
-                                </tr>
-                                <tr>
 
-                                </tr>
-                            </tbody>
                         </table>
-
+                    
+                        <div class ="row">
+                            <div class ="col-md-10"></div>
+                            <div class ="col-md-2">
+                                <a href="booking.php" class="btn btn-default" role="button">Back</a>
+                            </div>
+                        </div>
                     </div>
-
-
+                      
                 </div>
             </div>
         </div>
