@@ -1,0 +1,453 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 Oct, 2016, 3:29:57 PM
+    Author     : fangy
+*/
+
+#carpark {
+    width: 100px;
+}
+
+body {
+    font-family: Verdana;
+    font-size: 10px;
+    line-height: 22px;
+    letter-spacing: 0.3px;
+    padding-top: 90px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+h1 {
+    text-align: center;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+h2{
+    /*font-family: sans-serif;*/
+    text-align: center;
+    color: #ffa500;
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+.history {
+    color: blue;
+}
+
+/*#nav {
+width:750px;
+margin:0 auto;
+list-style:none;
+}
+
+#nav li {
+float:left;
+display: inline-block;
+}
+
+#nav a {
+display:block;
+text-align:center;
+width:150px; 
+text-decoration:none; 
+}
+*/
+
+
+.ui-widget.ui-widget-content { 
+    background-image: cross-fade;
+    background-color: white;
+}
+
+.panel-login {
+    border-color: #ccc;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    color: white;
+}
+.panel-login>.panel-heading {
+    color: #00415d;
+    border-color: #fff;
+    text-align:center;
+}
+.panel-login>.panel-heading a{
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+    font-size: 15px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+    color: #029f5b;
+    font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    clear: both;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+    height: 45px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+.panel{
+    margin-bottom: 20px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-login input:hover,
+.panel-login input:focus {
+    outline:none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #ccc;
+}
+.btn-login {
+    background-color: #59B2E0;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+    color: #fff;
+    background-color: #53A3CD;
+    border-color: #53A3CD;
+}
+.forgot-password {
+    text-decoration: underline;
+    color: white;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+    text-decoration: underline;
+    color: #666;
+}
+
+.btn-register {
+    background-color: #1CB94E;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    text-transform: uppercase;
+    border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+    color: #fff;
+    background-color: #1CA347;
+    border-color: #1CA347;
+}
+
+.btn-group-justified{
+    outline: none;
+    color: #fff;
+    font-size: 10px;
+    height: auto;
+    font-weight: normal;
+    padding: 14px 0;
+    border-color: #59B2E6;
+}
+
+.whiteLabel{
+    color: white;
+}
+
+form {
+    border-color: #e7e7e7;
+}
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header,
+.container>.navbar-collapse, .container>.navbar-header{
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.navbar-collapse {
+    max-height: 340px;
+}
+
+.navbar-fixed-top .navbar-collapse {
+    max-height: 340px;
+}
+
+.navbar-collapse{
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow-x: visible;
+    boarder-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+.collapse {
+    display: none;
+}
+
+
+.navbar-default.navbar-nav > li {
+    margin-left: 0;
+}
+
+.nav>li {
+    position: relative;
+    display: block;
+}
+* {
+    box-sizing: border-box;
+    outline: none!important;
+}
+
+li {
+    text-align: match-parent;
+}
+.navbar-default .navbar-collapse{
+    border-color: #e7e7e7;
+}
+.navbar-default .navbar-nav {
+    padding-top: 23px;
+}
+
+.navbar-nav{
+    margin: 7.5px - 15px;
+}
+
+.nav {
+    font-family: Verdana;
+    padding-left:0;
+    list-style: none;
+    list-style-type: none;
+    list-style-position: initial;
+    list-style-image: initial;   
+    background-color: #fff;
+}
+
+.navbar-default .navbar-nav > li {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.24s ease-in-out;
+}
+
+.navbar-default .navbar-nav > li > a {
+    padding: 0 15px 0 15px;
+    line-height: 32px;
+    border-bottom: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: lightblue;
+}
+
+.navbar-default li a, .navbar-default .navbar-nav > li > a, 
+.navbar-default .navbar-nav > .active > a{
+    color: black;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+}
+
+ul {
+    font-family: Verdana;
+    color: #161616;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.navbar-right {
+    float: right;
+    margin-right: 20px;
+    padding-top: 10px;
+}
+
+.blacklayer {
+    background: rgba(0,0,0,0.5)
+        url(img/bg/car2.jpg) repeat scroll 0 0;
+    /*background-color: lightyellow;*/
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.hero h1 {
+    font-family: Verdana;
+    text-transform: none;
+    letter-spacing: 1.25px;
+    font-weight: 400;
+    color: #fff;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.24s ease-in-out;
+    font-size: 80px !important;
+    line-height: 80px !important;
+    text-align: center;
+    margin: 0 0 20px;
+    padding: 0;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+.hero h2 {
+    font-family: Verdana;
+    text-transform: none;
+    letter-spacing: 1.25px;
+    font-weight: 400;
+    color: #fff;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.24s ease-in-out;
+    font-size: 80px !important;
+    line-height: 80px !important;
+    text-align: center;
+    margin: 0 0 20px;
+    padding: 0;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+}
+
+.navbar-brand>img {
+    display: block;
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
+
+.container>.navbar-collapse {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.btn-lg {
+    letter-spacing: 2px;
+    border-width: 2px;
+    text-transform: uppercase;
+}
+
+.btn-secondary{
+    border-color: #e8e8e8;
+    color: #e8e8e8;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-secondary:hover{
+    color: #3a3a3a;
+    background: #e8e8e8;
+}
+
+.btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33333333;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.btn {
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 5px solid;
+}
+.btn:hover{
+    text-decoration: none;
+}
+
+
+a{
+    transition: all 0.3s ease 0s;
+    background-color: transparent;
+}
