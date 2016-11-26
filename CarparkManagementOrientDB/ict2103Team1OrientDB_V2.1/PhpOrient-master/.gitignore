@@ -1,0 +1,13 @@
+.DS_Store
+auth.json
+/ci/environment
+coverage
+vendor
+log
+.idea
+*.phar
+*.zip
+localTestingArea
+composer.phar
+.vagrant
+composer.lock

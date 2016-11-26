@@ -1,4 +1,8 @@
-VERSION 2 (25/11/216, Friday, 8.36pm)
+VERSION 2.1 (26/11/2016, Saturday, 9.41am)
+- Added forms for seasonParking.php and seasonParking2.php to pass user values when adding season parking
+- Still yet to complete adding seasonParking into db
+
+VERSION 2 (25/11/2016, Friday, 8.36pm)
 - Login function implemented 
 
 VERSION 1 (23/11/2016, Wednesday, 6pm)
