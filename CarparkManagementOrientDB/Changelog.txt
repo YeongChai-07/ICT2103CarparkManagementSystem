@@ -1,3 +1,7 @@
+VERSION 3.0 (28/11/2016, Monday, 8.49pm)
+- System able to support multiple season parkings for user
+- Adding seasonParking done!
+
 VERSION 2.1 (26/11/2016, Saturday, 9.41am)
 - Added forms for seasonParking.php and seasonParking2.php to pass user values when adding season parking
 - Still yet to complete adding seasonParking into db
